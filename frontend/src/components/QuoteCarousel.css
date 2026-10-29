@@ -1,0 +1,242 @@
+/* ==========================================================================
+   Quote carousel (navy and gold, classic editorial look)
+   ========================================================================== */
+
+.qc {
+  --qc-navy: #0f172a;
+  --qc-gold: #d4af6a;
+  --qc-text: #f8fafc;
+  --qc-muted: #94a3b8;
+
+  position: relative;
+  box-sizing: border-box;
+  overflow: hidden;
+  padding: clamp(28px, 5vw, 56px);
+  background: var(--qc-navy);
+  border: 1px solid rgba(212, 175, 106, 0.25);
+  border-radius: 20px;
+  box-shadow: 0 20px 40px -20px rgba(15, 23, 42, 0.6);
+  color: var(--qc-text);
+  text-align: left;
+}
+
+.qc *,
+.qc *::before,
+.qc *::after {
+  box-sizing: border-box;
+}
+
+/* Large decorative opening quote mark */
+.qc__mark {
+  position: absolute;
+  top: -0.1em;
+  left: clamp(16px, 3vw, 36px);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(7rem, 14vw, 12rem);
+  line-height: 1;
+  color: var(--qc-gold);
+  opacity: 0.16;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ---------- Slide ---------- */
+
+.qc__slide {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: clamp(24px, 5vw, 56px);
+  min-height: 260px;
+  margin: 0;
+  animation: qc-fade 0.7s ease both;
+}
+
+.qc__portrait {
+  display: block;
+  width: clamp(112px, 16vw, 168px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center top;
+  filter: grayscale(1) contrast(1.05);
+  box-shadow: 0 0 0 4px var(--qc-navy), 0 0 0 6px var(--qc-gold), 0 18px 40px rgba(0, 0, 0, 0.35);
+}
+
+.qc__portrait--fallback {
+  display: grid;
+  place-items: center;
+  background: #1e293b;
+  color: var(--qc-gold);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  filter: none;
+}
+
+.qc__text {
+  margin: 0;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(1.25rem, 1.6vw + 0.9rem, 2rem);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.45;
+}
+
+.qc__text p {
+  margin: 0;
+}
+
+.qc__author {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-top: 20px;
+  padding-left: 16px;
+  border-left: 2px solid var(--qc-gold);
+}
+
+.qc__name {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.qc__credit {
+  position: relative;
+  margin: clamp(20px, 3vw, 32px) 0 0;
+  font-size: 0.78rem;
+  color: var(--qc-muted);
+}
+
+/* ---------- Loading skeleton ---------- */
+
+.qc__skeleton .qc__portrait {
+  box-shadow: none;
+  filter: none;
+}
+
+.qc__sk {
+  background: linear-gradient(90deg, #1e293b 25%, #2b3a52 50%, #1e293b 75%);
+  background-size: 200% 100%;
+  animation: qc-shimmer 1.4s ease-in-out infinite;
+}
+
+.qc__sk-line {
+  display: block;
+  height: 18px;
+  margin-bottom: 14px;
+  border-radius: 6px;
+}
+
+.qc__sk-line--short {
+  width: 55%;
+}
+
+/* ---------- Error state ---------- */
+
+.qc__state {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  min-height: 220px;
+  text-align: center;
+  color: #cbd5e1;
+}
+
+.qc__state p {
+  max-width: 44ch;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.qc__pill {
+  display: inline-flex;
+  align-items: center;
+  height: 40px;
+  padding: 0 18px;
+  background: transparent;
+  border: 1px solid var(--qc-gold);
+  border-radius: 999px;
+  color: var(--qc-gold);
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.qc__pill:hover {
+  background: var(--qc-gold);
+  color: var(--qc-navy);
+}
+
+.qc__pill:focus-visible {
+  outline: 2px solid var(--qc-gold);
+  outline-offset: 2px;
+}
+
+/* ---------- Animation ---------- */
+
+@keyframes qc-fade {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes qc-shimmer {
+  from {
+    background-position: 200% 0;
+  }
+  to {
+    background-position: -200% 0;
+  }
+}
+
+/* ---------- Mobile ---------- */
+
+@media (max-width: 640px) {
+  .qc__slide {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    align-content: center;
+    gap: 24px;
+    min-height: 380px;
+    text-align: center;
+  }
+
+  .qc__skeleton .qc__body {
+    width: 100%;
+  }
+
+  .qc__author {
+    align-items: center;
+    min-width: 120px;
+    margin: 18px auto 0;
+    padding: 12px 0 0;
+    border-left: 0;
+    border-top: 2px solid var(--qc-gold);
+  }
+
+  .qc__credit {
+    text-align: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .qc__slide,
+  .qc__sk {
+    animation: none;
+  }
+  .qc__pill {
+    transition: none;
+  }
+}

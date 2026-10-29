@@ -5,7 +5,8 @@ WORKDIR /app
 # Copy the portal directory contents
 COPY portal/ .
 
-# Run Maven build to generate the jar file
+# Give execution permission to mvnw and run build
+RUN chmod +x mvnw
 RUN ./mvnw clean package -DskipTests
 
 # Stage 2: Run the application

@@ -21,3 +21,10 @@ WORKDIR /app
 COPY --from=backend-build /app/target/*.jar app.jar
 EXPOSE 8081
 ENTRYPOINT ["java", "-jar", "/app/app.jar"]
+
+COPY --from=frontend-build /frontend/dist/ ./src/main/resources/static/
+
+RUN chmod +x mvnw
+RUN ./mvnw clean package -DskipTests
+
+RUN jar tf target/*.jar | grep "BOOT-INF/classes/static/"

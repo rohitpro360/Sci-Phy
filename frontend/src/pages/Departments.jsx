@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 
-const DEPT_API = 'http://localhost:8081/api/departments'
+const DEPT_API = '/api/departments'
 
 // All styles live here so no separate CSS file is needed
 const STYLES = `

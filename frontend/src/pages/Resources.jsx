@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 import './Resources.css'
 
-const API_URL = 'http://localhost:8081/api/resources'
-const DEPT_API = 'http://localhost:8081/api/departments'
+const API_URL = '/api/resources'
+const DEPT_API = '/api/departments'
 
 function Resources() {
   const [resources, setResources] = useState([])

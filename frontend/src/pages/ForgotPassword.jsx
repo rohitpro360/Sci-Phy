@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import axios from 'axios'
 
-const AUTH_API = 'http://localhost:8081/api/auth'
+const AUTH_API = '/api/auth'
 
 function ForgotPassword() {
   const [step, setStep] = useState(1) // 1: Email, 2: OTP, 3: New Password

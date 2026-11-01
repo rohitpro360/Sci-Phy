@@ -2,8 +2,8 @@ import { useEffect, useRef, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
-const AUTH_API = 'http://localhost:8081/api/auth/register'
-const DEPT_API = 'http://localhost:8081/api/departments'
+const AUTH_API = '/api/auth/register'
+const DEPT_API = '/api/departments'
 const MIN_PASSWORD_LENGTH = 6
 const REDIRECT_DELAY_MS = 2500
 

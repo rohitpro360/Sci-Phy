@@ -1,8 +1,7 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
-
-const LOGIN_API = 'http://localhost:8081/api/auth/login'
+const LOGIN_API = '/api/auth/login'
 const STORAGE_KEY = 'collegeUser'
 const ROLE_LABEL = { STUDENT: 'Student', TEACHER: 'Teacher' }
 

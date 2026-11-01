@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 
-const DEPT_API = 'http://localhost:8081/api/departments'
-const RESOURCES_API = 'http://localhost:8081/api/resources'
+const DEPT_API = '/api/departments'
+const RESOURCES_API = '/api/resources'
 
 function StudentView() {
   const [departments, setDepartments] = useState([])

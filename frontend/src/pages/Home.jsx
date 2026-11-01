@@ -4,7 +4,7 @@ import axios from 'axios'
 import QuoteCarousel from '../components/QuoteCarousel'
 import './Home.css'
 
-const USERS_API = 'http://localhost:8081/api/users'
+const USERS_API = '/api/users'
 const STORAGE_KEY = 'collegeUser'
 const TEACHER_FALLBACK_NAME = 'Mrs. Vandana Patil'
 
